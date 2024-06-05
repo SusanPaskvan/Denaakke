@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<style>
+   body mark {
+       background-color: yellow;
+   }
+</style>
+<head>
+   <meta charset="UTF-8">
+   <title>Madlibs</title>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   <!--<script>
+        var password = "tutorial";
+        (function passcodeprotect() {
+           var passcode = prompt("Enter PassCode");
+           while (passcode !== password) {
+              alert("Incorrect PassCode");
+              return passcodeprotect();
+           }
+        }());
+        alert('Welcome!');
+     </script>-->
+</head>
+
+
+<body>
+<br>
+<section class="blog-list px-3 py-5 p-md-5">
+          <div class="container">
+           <p>How to play: Madlibs is a template word game created by Leonard Stern and Roger Price. You will be given prompts
+           for a list of words that will be substituted in blanks in a story. Fill in the blanks to reveal the story!</p>
+               <h1 class="text-center font-weight-bold" style="font-size:36px;">Madlibs </h1>
+          </div>
+</section>
+   <div class="container">
+
+
+     <!-- start form -->
+     <div id="questions">
+       <h1>Please fill out the following!</h1>
+       <hr>
+       <form role="form">
+         <div class="form-group">
+           <label for="animal">Animal</label>
+           <input id="animal" class="form-control animal" type="text" placeholder="Enter an animal ...">
+         </div>
+         <div class="form-group">
+           <label for="animal1">Animal1</label>
+           <input id="animal1" class="form-control animal1" type="text" placeholder="Enter an animal ...">
+         </div>
+         <div class="form-group">
+           <label for="fish">Fish</label>
+           <input id="fish" class="form-control fish" type="text" placeholder="Enter a fish ...">
+         </div>
+         <div class="form-group">
+           <label for="adjective">Adjective</label>
+           <input id="adjective" class="form-control adjective" type="text" placeholder="Enter an adjective ...">
+         </div>
+         <div class="form-group">
+           <label for="bird">Another bird</label>
+           <input id="bird" class="form-control bird" type="text" placeholder="Enter a bird ...">
+         </div>
+         <div class="form-group">
+           <label for="adjective1">Adjective1</label>
+           <input id="adjective1" class="form-control adjective1" type="text" placeholder="Enter the name of another adjective ...">
+         </div>
+
+           <div class="form-group">
+               <label for="bird2">Another bird2</label>
+               <input id="bird2" class="form-control bird2" type="text" placeholder="Enter another bird ...">
+           </div>
+           <div class="form-group">
+                   <label for="sizeadjective">Another sizeadjective</label>
+                <input id="sizeadjective" class="form-control sizeadjective" type="text" placeholder="Enter a size adjective ...">
+           </div>
+       </form>
+       <button id="btn-click" type="submit" class="btn btn-primary btn-lg">Generate!</button>
+       <hr>
+     </div>
+     <!-- end form -->
+
+
+     <!-- start story -->
+     <div id="story">
+       <hr>
+             <h4>
+                <mark><span class="animal"></span></mark> k'etle kk'aat dent'aa.
+                 <mark><span class="animal1"></span></mark> baabe okko hʉneeł’aanh.
+                 <mark><span class="fish"></span></mark> <mark><span class="adjective"></span></mark> yeł <mark><span class="bird"></span></mark> <mark><span class="adjective1"></span></mark> yeł k’oonaaneek.
+                 Go <mark><span class="animal1"></span></mark> <mark><span class="bird2"></span></mark> <mark><span class="sizeadjective"></span></mark> eyeneedeelaanh.
+                 <mark><span class="animal1"></span></mark> <mark><span class="bird2"></span></mark> ehonh.
+
+
+           </h4>
+
+
+         <div>
+         <button type="submit" class="btn btn-primary btn-lg" id="play-btn">Play Again?</button>
+       </div>
+     </div>
+     <!-- end story -->
+
+
+
+
+   </div>
+   <!-- scripts -->
+   <script src="https://code.jquery.com/jquery-1.10.2.js" integrity="sha256-it5nQKHTz+34HijZJQkpNBIHsjpV8b6QzMJs9tmOBSo=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+<script>
+$(function() {
+
+
+   // hide the story from view
+   $("#story").hide();
+
+
+   // Function to capitalize the first letter of a string
+   function capitalizeFirstLetter(string) {
+       return string.charAt(0).toUpperCase() + string.slice(1);
+   }
+
+
+   // ---- event handler ---- //
+   $("#btn-click").click(function(e) {
+
+
+       e.preventDefault();
+
+
+       // grab the values from the input boxes, capitalize them, then append them to the DOM
+       $(".animal").empty().append(capitalizeFirstLetter($("input.animal").val()));
+       $(".animal1").empty().append($("input.animal1").val());
+       $(".fish").empty().append($("input.fish").val());
+       $(".adjective").empty().append($("input.adjective").val());
+       $(".bird").empty().append($("input.bird").val());
+       $(".adjective1").empty().append($("input.adjective1").val());
+       $(".bird1").empty().append($("input.bird1").val());
+       $(".animal1").empty().append($("input.amimal1").val());
+       $(".bird2").empty().append($("input.bird2").val());
+       $(".size").empty().append($("input.size").val());
+       $(".animal1").empty().append($("input.amimal1").val());
+       $(".bird2").empty().append($("input.bird2").val());
+
+
+       // show the story
+       $("#story").show();
+
+
+       // empty the form's values
+       $(':input').val('');
+
+
+       // hide the questions
+       $("#questions").hide();
+
+
+   });
+
+
+   // ---- event handler ---- //
+   $("#play-btn").click(function(e) {
+       $("#questions").show();
+       $("#story").hide();
+   });
+
+
+});
+</script>
+
+
+
+
+</body>
+</html>
+
+
